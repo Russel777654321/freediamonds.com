@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Free Diamonds</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #fff;
+      margin: 0;
+    }
+    .header {
+      background: #ffbf5c;
+      padding: 20px 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .container {
+      margin-top: 40px;
+    }
+    input, button {
+      padding: 12px;
+      font-size: 16px;
+      margin: 10px;
+      width: 250px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #ffbf5c;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    .link-btn {
+      display: inline-block;
+      margin: 10px;
+      color: #000;
+      background: #ffbf5c;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page 1 -->
+  <div class="header">💎 FREE DIAMONDS</div>
+  <div class="container" id="page1">
+    <h2>Please Enter Your FF UID</h2>
+    <input type="text" id="ffid" placeholder="Enter FF ID" />
+    <br />
+    <button onclick="goToPage2()">Continue</button>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="container hidden" id="page2">
+    <h2>Hello, <span id="displayUID"></span></h2>
+    <p>Please Select Diamond</p>
+    <button onclick="selectDiamonds('1000')">1K DIAMOND</button><br/>
+    <button onclick="selectDiamonds('2000')">2K DIAMOND</button><br/>
+    <button onclick="selectDiamonds('5000')">5K DIAMOND</button><br/>
+  </div>
+
+  <!-- Page 3 -->
+  <div class="container hidden" id="page3">
+    <h2>LAST STEP</h2>
+    <p>HELLO <span id="verifyUID"></span>, PLEASE VERIFY YOURSELF</p>
+    <button onclick="goToVerificationLinks()">VERIFY</button>
+  </div>
+
+  <!-- Page 4 -->
+  <div class="container hidden" id="page4">
+    <h2>🔗 Final Step</h2>
+    <p>Please follow these pages to complete verification:</p>
+    <a class="link-btn" href="https://www.youtube.com/@EVIL-RUPAM" target="_blank">Follow YouTube</a><br/>
+    <a class="link-btn" href="https://www.instagram.com/_itz__rupam___.04/" target="_blank">Follow Instagram</a><br/>
+    <button onclick="showFinalMessage()">I Have Done It</button>
+  </div>
+
+  <!-- Final Page -->
+  <div class="container hidden" id="finalMessage">
+    <h2>✅ You will get your diamonds soon!</h2>
+    <p>Thank you for completing the steps.</p>
+  </div>
+
+  <script>
+    function goToPage2() {
+      const uid = document.getElementById('ffid').value.trim();
+      if (!uid) {
+        alert('Please enter your FF UID.');
+        return;
+      }
+      document.getElementById('page1').classList.add('hidden');
+      document.getElementById('page2').classList.remove('hidden');
+      document.getElementById('displayUID').innerText = uid;
+    }
+
+    function selectDiamonds(amount) {
+      document.getElementById('page2').classList.add('hidden');
+      document.getElementById('page3').classList.remove('hidden');
+      const uid = document.getElementById('ffid').value;
+      document.getElementById('verifyUID').innerText = uid;
+    }
+
+    function goToVerificationLinks() {
+      document.getElementById('page3').classList.add('hidden');
+      document.getElementById('page4').classList.remove('hidden');
+    }
+
+    function showFinalMessage() {
+      document.getElementById('page4').classList.add('hidden');
+      document.getElementById('finalMessage').classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>
+
